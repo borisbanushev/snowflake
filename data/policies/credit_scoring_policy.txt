@@ -1,0 +1,73 @@
+CREDIT SCORING MODEL USAGE POLICY
+Version 2.1 - Effective January 2025
+
+1. PURPOSE
+This policy establishes guidelines for using the XGBoost Credit Scoring Model in credit decisioning.
+
+2. CREDIT SCORE BANDS AND DECISIONS
+The ML model produces a score band from 1-10, mapped to credit ratings:
+
+Score Band | Rating | Default Decision | Max Credit Limit Multiplier
+--------------------------------------------------------------------------
+10         | A+     | AUTO APPROVE     | 3.0x annual income
+9          | A      | AUTO APPROVE     | 2.5x annual income
+8          | B+     | AUTO APPROVE     | 2.0x annual income
+7          | B      | APPROVE          | 1.5x annual income
+6          | C+     | APPROVE          | 1.0x annual income
+5          | C      | REFER            | 0.75x annual income
+4          | C-     | REFER            | 0.5x annual income
+3          | D      | DECLINE          | N/A
+2          | E      | DECLINE          | N/A
+1          | F      | DECLINE          | N/A
+
+3. OVERRIDE AUTHORITY
+- Score Bands 5-6: Credit Officers may approve with documented justification
+- Score Bands 3-4: Requires Senior Credit Manager approval
+- Score Bands 1-2: Requires Credit Committee approval (loans > $50,000)
+
+4. SPECIAL CONSIDERATIONS
+- Existing customers with 24+ months good standing: May upgrade 1 band
+- Government employees: May upgrade 1 band for stability
+- Self-employed < 2 years: Downgrade 1 band unless collateralized
+
+5. MODEL LIMITATIONS
+The model should not be the sole decision factor. Officers must consider:
+- Purpose of credit
+- Industry/employment sector risks
+- Collateral quality
+- Relationship history
+- Local market conditions
+
+6. DOCUMENTATION REQUIREMENTS
+All approvals must include:
+- ML score band and rating
+- Key factors influencing decision
+- Any policy exceptions applied
+- Justification for overrides
+
+7. MODEL GOVERNANCE
+- Model version must be logged for each decision
+- Model performance monitored quarterly
+- Model retraining annually or when performance degrades
+- Bias testing required before deployment
+
+8. PROHIBITED FACTORS
+The following must NOT influence credit decisions:
+- Race, color, religion, national origin
+- Gender, marital status
+- Age (except for legal capacity)
+- Source of income (public assistance)
+- Geographic location (redlining)
+
+9. APPEALS PROCESS
+Declined applicants have right to:
+- Receive specific reasons for decline
+- Request manual review within 30 days
+- Provide additional supporting documentation
+
+10. COMPLIANCE
+This policy complies with:
+- Fair Credit Reporting Act (FCRA)
+- Equal Credit Opportunity Act (ECOA)
+- Model Risk Management SR 11-7
+- Local consumer protection regulations

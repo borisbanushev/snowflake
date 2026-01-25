@@ -1,0 +1,8 @@
+# Data Generation Dependencies
+faker==22.0.0
+pandas==2.1.4
+numpy==1.26.3
+cx_Oracle==8.3.0
+mysql-connector-python==8.2.0
+python-dateutil==2.8.2
+tqdm==4.66.1

@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Oracle Database (T24 Core Banking)
+  oracle-t24:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: oracle-t24
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PASSWORD: T24Demo2024!
+      APP_USER: t24user
+      APP_USER_PASSWORD: T24UserPass!
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+      - ./oracle/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "sqlplus", "-L", "t24user/T24UserPass!@//localhost:1521/XE", "@/dev/null"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - snowflake-network
+
+  # MySQL Database (Digital Banking)
+  mysql-digital:
+    image: mysql:8.0
+    container_name: mysql-digital
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: DigitalDemo2024!
+      MYSQL_DATABASE: digital_banking
+      MYSQL_USER: digitaluser
+      MYSQL_PASSWORD: DigitalPass!
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --default-authentication-plugin=mysql_native_password --binlog-format=ROW --log-bin=mysql-bin
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-udigitaluser", "-pDigitalPass!"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - snowflake-network
+
+volumes:
+  oracle-data:
+    driver: local
+  mysql-data:
+    driver: local
+
+networks:
+  snowflake-network:
+    driver: bridge
