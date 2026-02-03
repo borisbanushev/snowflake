@@ -1,8 +1,9 @@
 # Data Generation Dependencies
-faker==22.0.0
-pandas==2.1.4
-numpy==1.26.3
-cx_Oracle==8.3.0
-mysql-connector-python==8.2.0
-python-dateutil==2.8.2
-tqdm==4.66.1
+# Compatible with Python 3.13
+faker==28.0.0
+pandas>=2.2.0
+numpy>=1.26.0
+oracledb>=2.0.0
+mysql-connector-python>=8.3.0
+python-dateutil>=2.8.2
+tqdm>=4.66.0

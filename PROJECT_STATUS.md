@@ -54,11 +54,14 @@ All core components of the Credit Decisioning Platform have been created and are
 - ✅ `setup.sh` - Automated setup (Docker, data, dependencies)
 - ✅ `deploy_all.sh` - Deploy all Snowflake objects
 
-### 6. **Documentation** (4 files)
+### 6. **Documentation** (7 files)
 - ✅ `README.md` - Project overview and quick start
 - ✅ `implementationplan.md` - Complete 2,600+ line implementation guide
-- ✅ `LICENSE` - MIT License
 - ✅ `PROJECT_STATUS.md` - This file
+- ✅ `TECHNICAL_PRESENTATION.md` - Comprehensive technical deep-dive (1,400+ lines)
+- ✅ `PRESENTATION_SLIDES.md` - Executive presentation deck (37 slides)
+- ✅ `TECHNICAL_SPECS.md` - Quick reference/cheat sheet
+- ✅ `LICENSE` - MIT License
 
 ### 7. **Policy Documents** (1 file)
 - ✅ `credit_scoring_policy.txt` - Sample bank policy for Cortex Search
@@ -72,12 +75,12 @@ All core components of the Credit Decisioning Platform have been created and are
 ## 📊 Project Statistics
 
 ```
-Total Files Created: 30+
+Total Files Created: 33+
 Lines of Code:
   - SQL: ~2,000 lines
   - Python: ~500 lines
-  - Documentation: ~2,700 lines
-  - Total: ~5,200 lines
+  - Documentation: ~7,700 lines (including new presentations)
+  - Total: ~10,200 lines
 
 Directory Structure:
   - infrastructure/
@@ -85,7 +88,7 @@ Directory Structure:
   - streamlit/ (3 directories, 2 Python files)
   - data/ (2 directories, 2 files)
   - scripts/ (2 shell scripts)
-  - docs/
+  - docs/ (7 documentation files)
 ```
 
 ---
@@ -191,10 +194,13 @@ These features are documented in `implementationplan.md` but not yet implemented
 ## 🔗 Key Files to Start With
 
 1. **`README.md`** - Project overview
-2. **`implementationplan.md`** - Complete implementation guide
-3. **`scripts/setup.sh`** - Automated setup
-4. **`streamlit/main.py`** - Application entry point
-5. **`snowflake/00_setup/`** - Snowflake foundation
+2. **`PRESENTATION_SLIDES.md`** - 📊 Executive presentation (37 slides)
+3. **`TECHNICAL_PRESENTATION.md`** - 📖 Full technical deep-dive
+4. **`TECHNICAL_SPECS.md`** - 📋 Quick reference guide
+5. **`implementationplan.md`** - Complete implementation guide
+6. **`scripts/setup.sh`** - Automated setup
+7. **`streamlit/main.py`** - Application entry point
+8. **`snowflake/00_setup/`** - Snowflake foundation
 
 ---
 

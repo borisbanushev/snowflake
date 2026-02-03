@@ -4,7 +4,7 @@ Generate sample T24 Core Banking data for Oracle database
 Generates 100K customers with realistic financial data
 """
 
-import cx_Oracle
+import oracledb
 import pandas as pd
 import numpy as np
 from faker import Faker
@@ -27,10 +27,13 @@ TRANSACTIONS_PER_ACCOUNT = 50
 def get_oracle_connection():
     """Connect to Oracle database"""
     try:
-        connection = cx_Oracle.connect(
+        # Use the new python-oracledb driver in thin mode (no Oracle Client needed)
+        connection = oracledb.connect(
             user='t24user',
             password='T24UserPass!',
-            dsn='localhost:1521/XE'
+            host='localhost',
+            port=1521,
+            service_name='XE'
         )
         print("✓ Connected to Oracle T24 database")
         return connection
